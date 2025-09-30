@@ -28,31 +28,35 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <h1 className="text-3xl font-bold mb-6">Recipe Generator</h1>
+    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-6 font-vt323 text-cyan-400">
+      <h1 className="text-2xl md:text-4xl font-pressStart2P mb-8 neon-text">
+        Recipe Generator
+      </h1>
 
       <input
         type="text"
-        className="border p-2 rounded w-full max-w-md mb-4"
+        className="bg-transparent border border-cyan-500 focus:border-pink-500 text-cyan-400 placeholder-cyan-600 rounded px-4 py-2 w-full max-w-md mb-6 neon-glow focus:outline-none"
         placeholder="Enter ingredients (comma separated)"
         value={ingredients}
         onChange={(e) => setIngredients(e.target.value)}
       />
 
       <select
-        className="border p-2 rounded w-full max-w-md mb-4"
+        className="bg-transparent border border-cyan-500 focus:border-pink-500 text-cyan-400 rounded px-4 py-2 w-full max-w-md mb-6 neon-glow focus:outline-none"
         value={mealType}
         onChange={(e) => setMealType(e.target.value)}
       >
-        <option value="">Any meal</option>
-        <option value="breakfast">Breakfast</option>
-        <option value="lunch">Lunch</option>
-        <option value="dinner">Dinner</option>
-        <option value="snack">Snack</option>
+        <option value="" className="bg-black text-cyan-400">Any meal</option>
+        <option value="breakfast" className="bg-black text-cyan-400">Breakfast</option>
+        <option value="lunch" className="bg-black text-cyan-400">Lunch</option>
+        <option value="dinner" className="bg-black text-cyan-400">Dinner</option>
+        <option value="snack" className="bg-black text-cyan-400">Snack</option>
       </select>
 
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-6"
+        className={`px-6 py-3 rounded font-pressStart2P transition neon-button ${
+          loading ? "opacity-50 cursor-not-allowed" : "hover:neon-button-hover"
+        }`}
         onClick={handleGenerate}
         disabled={loading}
       >
@@ -60,8 +64,8 @@ function App() {
       </button>
 
       {recipe && (
-        <div className="bg-white p-4 rounded shadow max-w-md w-full">
-          <pre className="whitespace-pre-wrap">{recipe}</pre>
+        <div className="bg-transparent border border-cyan-500 rounded max-w-md w-full p-4 mt-8 neon-glow text-cyan-400">
+          <pre className="whitespace-pre-wrap font-vt323">{recipe}</pre>
         </div>
       )}
     </div>
